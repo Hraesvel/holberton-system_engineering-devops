@@ -1,2 +1,2 @@
 #!/bin/bash
-echo -e $(tail -1 test) >> test
+echo -e $(tail -1 iacta) >> iacta
