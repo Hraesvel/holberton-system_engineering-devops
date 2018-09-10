@@ -1,2 +1,2 @@
 #!/bin/bash
-echo -e "\n"{a..z}{a..z} |sort| grep -vwE "oo" | grep -Ev "^$"
+echo -e "\n"{a..z}{a..z} | grep -vwE 'oo|^$'
