@@ -4,11 +4,11 @@
 IFS=$'\n' read -d '' -r -a lines < /etc/passwd
 nb_lines=${#lines[*]}
 i=0
-while [ $i -lt $nb_lines ]; do
+while [ $i -lt "$nb_lines" ]; do
 	line=${lines[i]}
-	user=`echo $line | cut -d ':' -f1`
-	id=`echo $line | cut -d ':' -f3`
-	path=`echo $line | cut -d ':' -f6`
+	user=$(echo "$line" | cut -d ':' -f1)
+	id=$(echo "$line" | cut -d ':' -f3)
+	path=$(echo "$line" | cut -d ':' -f6)
 	echo "$user:$id:$path"
 	let i+=1
 done
