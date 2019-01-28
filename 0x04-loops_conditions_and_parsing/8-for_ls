@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # script that displays the contenct of the current directory
-for i in `ls | cut -d '-' -f2`; do
-	echo $i
+for i in *; do
+	echo "$i" | cut -d '-' -f2
 done
