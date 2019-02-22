@@ -3,12 +3,17 @@
 h=0
 min=60
 
-while [ $h -lt 13 ]; do
+while true; do
+
 	if [ $((min % 60)) -eq 0 ]; then
 		echo "Hour: $((h % 13))"
 		let h+=1
 	else
 		echo $((min % 60))
+	fi
+
+	if [ $h -gt 12 ] && [ $((min % 60)) -eq 59 ]; then
+		break
 	fi
 
 	let min+=1

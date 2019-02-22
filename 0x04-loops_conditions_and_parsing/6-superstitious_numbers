@@ -5,6 +5,7 @@
 #	displays bad luck from Italy for the 17th loop iteration
 i=1
 while [ $i -le 20 ]; do
+	echo $i
 	case "$i" in
 		4 )
 			echo "bad luck from China"
@@ -13,10 +14,7 @@ while [ $i -le 20 ]; do
 			echo "bad luck from Japan"
 			;;
 		17 )
-			echo "bad lucky from Italy"
-			;;
-		* )
-			echo $i
+			echo "bad luck from Italy"
 			;;
 	esac
 	let i+=1

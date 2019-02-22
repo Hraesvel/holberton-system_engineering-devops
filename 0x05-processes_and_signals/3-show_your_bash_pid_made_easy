@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Show the id of the current bash
+pgrep -u root bash -l
