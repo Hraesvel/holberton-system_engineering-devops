@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
+# show all IP and their Pid that are listening 
 netstat -pl
