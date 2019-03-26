@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# adds a redirect location to server config
+./1-install_nginx_web_server
+./3-redirection
+DEST="/etc/nginx"
+src="/var/www/default"
+echo "Ceci n'est pas une page" > $src/page_not_found.html
+sed -i '/root.*;/a error_page 404 /page_not_found.html;' $DEST/sites-available/default
+service nginx restart
