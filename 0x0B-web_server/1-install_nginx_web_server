@@ -10,5 +10,6 @@ printf "server  {
 
 	location / {
 		index /index.html;	
-	}" > "$DEST/default"
+	}
+}" > "$DEST/default"
 nginx -s reload
