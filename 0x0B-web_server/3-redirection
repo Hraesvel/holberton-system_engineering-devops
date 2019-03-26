@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # adds a redirect location to server config
+./1-install_nginx_web_server
 DEST="/etc/nginx"
-sed -i "\$ilocation /redirect_me {\n return 301 \"https://www.youtube.com/watch?v=QH2-TGUlwu4
-\";\n }" $DEST/sites-available/default
+sed -i "\$ilocation /redirect_me {\n return 301 \
+\"https://www.youtube.com/watch?v=QH2-TGUlwu4\";\n}" \
+$DEST/sites-available/default
 service nginx restart
