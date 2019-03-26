@@ -13,4 +13,4 @@ printf "server  {
 	}
 }" > "$DEST/default"
 echo "Holberton School was here!" > index.html
-nginx -s reload
+service nginx restart
