@@ -9,5 +9,5 @@ fi
 SRC=$1
 IP=$2
 UNAME=$3
-DEST=$4
-scp -i ~/.ssh/holberton -o "strictHostKeyChecking=no" "$SRC" "$UNAME@$IP:~/$DEST"
+KEY=$4
+scp -i $KEY -o "strictHostKeyChecking=no" "$SRC" "$UNAME@$IP:~/"
