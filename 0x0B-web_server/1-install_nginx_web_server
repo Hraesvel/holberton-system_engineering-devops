@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # installs and configs nginx server
-apt-get update
 apt-get install nginx -y
 DEST="/etc/nginx/sites-available"
 printf "server  {
