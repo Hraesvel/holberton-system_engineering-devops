@@ -2,7 +2,7 @@
 # adds a redirect location to server config
 ./1-install_nginx_web_server
 DEST="/etc/nginx"
-sed -i "\$ilocation /redirect_me {\n return 301 \
-\"https://www.youtube.com/watch?v=QH2-TGUlwu4\";\n}" \
-$DEST/sites-available/default
+url="https://www.youtube.com/watch?v=QH2-TGUlwu4"
+LINE="location /redirect_me {\nreturn 301 $url;\n}"
+sed -i "\$i $LINE" $DEST/sites-available/default
 service nginx restart
