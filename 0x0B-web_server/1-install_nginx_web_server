@@ -6,10 +6,12 @@ printf "server  {
 	listen 80 default_server;
 	listen [::]:80 default_server;
 	server_name localhost;
-	root /home/ubuntu/static;
+	root /home/ubuntu/;
 
 	location / {
 		index /index.html;	
 	}
 }" > "$DEST/default"
+echo "Holberton School was here!" > index.html
 nginx -s reload
+
