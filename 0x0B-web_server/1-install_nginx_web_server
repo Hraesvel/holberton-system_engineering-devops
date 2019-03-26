@@ -1,18 +1,16 @@
 #!/usr/bin/env bash
 # installs and configs nginx server
 apt-get install nginx -y
-DEST="/etc/nginx"
+DEST="/etc/nginx/sites-available"
 printf "server  {
 	listen 80 default_server;
 	listen [::]:80 default_server;
 	server_name localhost;
-	root html;
+	root /home/ubuntu/;
 
 	location / {
 		index /index.html;	
 	}
-}" > "$DEST/sites-available/default"
-mkdir -p $DEST/html
-echo "Holberton School was here!" > $DEST/html/index.html
-service nginx stop
-service nginx start
+}" > "$DEST/default"
+echo "Holberton School was here!" > index.html
+nginx -s reload
