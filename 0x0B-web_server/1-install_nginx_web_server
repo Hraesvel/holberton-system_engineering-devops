@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# installs and configs nginx server
+apt-get install nginx -y
+DEST="/etc/nginx/sites-available"
+printf "server  {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+	server_name localhost;
+	root /home/ubuntu/static;
+
+	location / {
+		index /index.html;	
+	}" > "$DEST/default"
+nginx -s reload
