@@ -7,7 +7,7 @@
 - [2. Setup a domain name](#2-Setup-a-domain-name)
 - [3. Redirection](#3-Redirection)
 - [4. Not found page 404](#4-Not-found-page-404)
-- [5. Design a beautiful 404 page](#5-Design-a-beautiful-404-page)
+- ~[5. Design a beautiful 404 page]~
 - [6. Deploy fast, deploy well](#6-Deploy-fast,-deploy-well)
 
 
@@ -221,17 +221,6 @@ Ceci n'est pas une page
 sylvain@ubuntu$
 
 ```
-
-
-
----
-
-
-### 5. Design a beautiful 404 page
-File: **[5-design_a_beautiful_404_page](5-design_a_beautiful_404_page)**
-
-
-
 
 ---
 
