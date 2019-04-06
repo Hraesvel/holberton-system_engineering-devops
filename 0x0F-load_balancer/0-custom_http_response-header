@@ -4,7 +4,7 @@ service nginx restart
 # configures http header for the server.
 apt-get update
 apt-get install nginx -y
-DEST="/etc/nginx/sites-available"
+DEST="/etc/nginx"
 src="/var/www/default"
 Static="/var/www/default"
 url="https://www.youtube.com/watch?v=QH2-TGUlwu4"
@@ -19,11 +19,11 @@ printf "server  {
 	location / {
 		index index.html index.html;	
 	}
-}" > "$DEST/default"
+}" > "$DEST/sites-available/default"
 mkdir -p $Static
 echo "Holberton School was here!" > $Static/index.html
 sed -i "\$i $LINE" $DEST/sites-available/default
 echo "Ceci n'est pas une page" > $src/page_not_found.html
 sed -i '/root.*;/a error_page 404 /page_not_found.html;' $DEST/sites-available/default
-sed -i '/http {.*/aadd_header X-Served-By $hostname;' /etc/nginx/nginx.conf 
+sed -i '/http {.*/aadd_header X-Served-By $hostname;' $DEST/nginx.conf 
 service nginx restart
