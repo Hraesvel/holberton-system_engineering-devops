@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# configures http header for the server.
+sed -i '/http {.*/aadd_header X-Served-By $hostname;' /etc/nginx/nginx.conf 
+service nginx restart
