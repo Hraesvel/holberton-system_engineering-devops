@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# install HAproxy on a server to act as the load balancer
+apt-get update
+apt-get install -y software-properties-common
+add-apt-repository -y ppa:vbernat/haproxy-1.8
+apt-get update
+apt-get install -y haproxy=1.8.\*
+
+DEST="/etc/haproxy"
+sed -i '$i ENABLED=1' /etc/default/haproxy
+
+printf "global
+	log 127.0.0.1 local0 notice
+	maxconn 2000
+	user haproxy
+	group haproxy
+
+defaults
+	log global
+	mode http
+	option httplog
+	option dontlognull
+	retries 3
+	option redispatch
+	timeout connect 5000
+	timeout client 10000
+	timeout server 10000
+
+listen holbertonweb
+	bind *:80
+	mode http
+	balance roundrobin
+	server 538-web-01 104.196.3.52:80 check
+	server 538-web-02 35.237.150.53:80 check
+" > $DEST/haproxy.cfg
+service haproxy restart
