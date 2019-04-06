@@ -1,4 +1,29 @@
+service nginx restart
 #!/usr/bin/env bash
+# installs and configs nginx server
 # configures http header for the server.
+apt-get update
+apt-get install nginx -y
+DEST="/etc/nginx/sites-available"
+src="/var/www/default"
+Static="/var/www/default"
+url="https://www.youtube.com/watch?v=QH2-TGUlwu4"
+LINE="location /redirect_me {\nreturn 301 $url;\n}"
+
+printf "server  {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+	server_name localhost;
+	root $Static;
+
+	location / {
+		index index.html index.html;	
+	}
+}" > "$DEST/default"
+mkdir -p $Static
+echo "Holberton School was here!" > $Static/index.html
+sed -i "\$i $LINE" $DEST/sites-available/default
+echo "Ceci n'est pas une page" > $src/page_not_found.html
+sed -i '/root.*;/a error_page 404 /page_not_found.html;' $DEST/sites-available/default
 sed -i '/http {.*/aadd_header X-Served-By $hostname;' /etc/nginx/nginx.conf 
 service nginx restart
