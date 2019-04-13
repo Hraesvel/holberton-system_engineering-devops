@@ -3,5 +3,6 @@
 pkill -f apache2
 service nginx stop
 sed -i '1c user nginx;' /etc/nginx/nginx.conf
-sed -i 's/80/8080/g' /etc/nginx/sites-enabled/default
+sed -i 's/80 /8080 /g' /etc/nginx/sites-enabled/default
+chmod a+r /etc/nginx/nginx.conf
 sudo -H -u nginx nginx
