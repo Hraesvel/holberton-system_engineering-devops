@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # runs nginx as user nginx
-sed -i '1cuser nginx;' /etc/nginx/nginx.conf
-sed -i 's/80/8080/g' /etc/nginx/sites-enabled/default
+sed -i '/#user/c\user nginx;' /etc/nginx/nginx.conf
+sed -i '21,22s/80/8080/g' /etc/nginx/sites-enabled/default
 chmod o+r /etc/nginx/nginx.conf
 pkill -f apache
 sudo -u nginx nginx
