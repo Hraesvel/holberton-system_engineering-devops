@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # runs nginx as user nginx
-service apache2 stop
+pkill -f apache
 sed -i '1c user nginx;' /etc/nginx/nginx.conf
 sed -i 's/80 /8080 /g' /etc/nginx/sites-enabled/default
 chmod a+r /etc/nginx/nginx.conf
