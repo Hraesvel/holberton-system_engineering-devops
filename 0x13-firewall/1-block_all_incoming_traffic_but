@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# This script will install and configure UFW (firewall) for the web servers
+apt-get update
+apt-get install -y ufw
+ufw default deny incoming
+ufw default allow outgoing
+ufw allow 22 	# ssh
+ufw allow 443 	# https
+ufw allow 80 	# http
+echo "y" | ufw enable
