@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """This Script will fetch a user's todo list"""
+import requests
+import sys
 
 if __name__ == "__main__":
-    import requests
-    import sys
 
     entrypoint = "https://jsonplaceholder.typicode.com"
     usrId = sys.argv[1]
