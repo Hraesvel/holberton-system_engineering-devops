@@ -22,7 +22,13 @@ if __name__ == "__main__":
 
         with open("{usrId}.csv".format(usrId=usrId), "w+") as f:
             fields = ("id", "username", "status", "title")
-            writer = csv.DictWriter(f, fieldnames=fields, lineterminator='\n')
+            writer = csv.DictWriter(
+                    f,
+                    fieldnames=fields,
+                    lineterminator='\n',
+                    quotechar='"',
+                    quoting=csv.QUOTE_ALL
+                    )
             for task in tasks:
                 writer.writerow(dict(
                     id=task['userId'],
