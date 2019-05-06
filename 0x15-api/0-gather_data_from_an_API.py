@@ -4,7 +4,6 @@ import requests
 import sys
 
 if __name__ == "__main__":
-
     entrypoint = "https://jsonplaceholder.typicode.com"
     usrId = sys.argv[1]
     try:
@@ -18,7 +17,8 @@ if __name__ == "__main__":
         nom_t = len(tasks)
         done_t = [t for t in tasks if t['completed'] is True]
         print(
-            f"Employee {usr['name']} is done with tasks({len(done_t)}/{nom_t})"
+            "Employee {} is done with tasks({}/{})"
+            .format(usr['name'], len(done_t), nom_t)
         )
         [print('\t' + t['title']) for t in done_t]
     except Exception as e:
