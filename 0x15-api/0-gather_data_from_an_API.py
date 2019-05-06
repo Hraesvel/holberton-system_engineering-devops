@@ -21,6 +21,6 @@ if __name__ == "__main__":
                 "Employee {} is done with tasks({}/{})"
                 .format(usr['name'], len(done_t), nom_t)
             )
-            [print('\t' + t['title']) for t in done_t]
+            [print('\t ' + t['title']) for t in done_t]
     except Exception as e:
         print(e)
