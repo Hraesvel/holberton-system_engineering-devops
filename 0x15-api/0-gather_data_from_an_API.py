@@ -7,20 +7,20 @@ if __name__ == "__main__":
     entrypoint = "https://jsonplaceholder.typicode.com"
     usrId = sys.argv[1]
     try:
-        usr = requests.get(
+        req_user = requests.get(
             "{ep}/users/{usrId}".format(ep=entrypoint, usrId=usrId)
         ).json()
-        if usr:
+        if req_user:
             tasks = requests.get(
                 "{ep}/todos".format(ep=entrypoint),
                 params={"userId": usrId}
             ).json()
-            nom_t = len(tasks)
-            done_t = [t for t in tasks if t['completed'] is True]
+            num_tasks = len(tasks)
+            fin_tasks = [t for t in tasks if t['completed'] is True]
             print(
                 "Employee {} is done with tasks({}/{}):"
-                .format(usr['name'], len(done_t), nom_t)
+                .format(req_user['name'], len(fin_tasks), num_tasks)
             )
-            [print('\t ' + t['title']) for t in done_t]
+            [print('\t ' + task['title']) for task in fin_tasks]
     except Exception as e:
         print(e)

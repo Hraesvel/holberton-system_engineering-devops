@@ -10,17 +10,14 @@ if __name__ == "__main__":
     entrypoint = "https://jsonplaceholder.typicode.com"
     usrId = sys.argv[1]
     try:
-        usr = requests.get(
+        req_user = requests.get(
             "{ep}/users/{usrId}".format(ep=entrypoint, usrId=usrId)
         ).json()
-        if usr:
+        if req_user:
             tasks = requests.get(
                 "{ep}/todos".format(ep=entrypoint),
                 params={"userId": usrId}
             ).json()
-            nom_t = len(tasks)
-            done_t = [t for t in tasks if t['completed'] is True]
-
             with open("{usrId}.csv".format(usrId=usrId), "w+") as f:
                 fields = ("id", "username", "status", "title")
                 writer = csv.DictWriter(
@@ -33,7 +30,7 @@ if __name__ == "__main__":
                 for task in tasks:
                     writer.writerow(dict(
                         id=task['userId'],
-                        username=usr["username"],
+                        username=req_user["username"],
                         status=task["completed"],
                         title=task["title"]
                     ))
