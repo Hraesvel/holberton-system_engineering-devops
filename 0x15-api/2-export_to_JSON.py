@@ -2,29 +2,33 @@
 """This will expand fetch all user and task and organizes the data to
 user and task(todos) relationship
 """
+import json
+import requests
+import sys
+
 if __name__ == "__main__":
-    import requests
-    import json
-
     entrypoint = "https://jsonplaceholder.typicode.com"
+    usrId = sys.argv[1]
     try:
-        users = requests.get(f"{entrypoint}/users").json()
-        tasks = requests.get(f"{entrypoint}/todos").json()
-
-        with open("todo_all_employees.json", "w+") as f:
-            collected_tasks = dict()
-            for usr in users:
-                usr_id = usr["id"]
-                usr_task = {usr_id: []}
-                for t in [t for t in tasks if t['userId'] == usr_id]:
+        usr = requests.get(
+            "{ep}/users".format(ep=entrypoint),
+            params={'id': usrId}
+        ).json()
+        if usr:
+            tasks = requests.get(
+                "{ep}/todos".format(ep=entrypoint),
+                params={"userId": usrId}
+            ).json()
+            with open("{}.json".format(usrId), "w+") as f:
+                uId_s = "{}".format(usrId)
+                usr_task = {uId_s: []}
+                for t in tasks:
                     task = dict(
-                        username=f'{usr["name"]}',
-                        task=f'{t["title"]}',
-                        completed=f'{t["completed"]}'
+                        username=usr[0]["username"],
+                        task=t["title"],
+                        completed=t["completed"]
                     )
-                    tasks.remove(t)
-                    usr_task[usr_id].append(task)
-                collected_tasks.update(usr_task)
-            json.dump(collected_tasks, f)
+                    usr_task[uId_s].append(task)
+                json.dump(usr_task, f)
     except Exception as e:
         print(e)
