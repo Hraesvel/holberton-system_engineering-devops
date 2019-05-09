@@ -39,7 +39,6 @@ def recurse(subreddit, hot_list=[]):
             recurse(sr, hot_list)
 
         hot_list += get_titles(data.get('children', None))
-        print(len(hot_list))
         return hot_list
     except Exception as e:
         return None
