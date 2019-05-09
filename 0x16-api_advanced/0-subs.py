@@ -17,10 +17,10 @@ def number_of_subscribers(subreddit):
         h = {'user-agent' : 'Mozilla/5.0'}
         url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
         req = requests.get(url, headers=h)
+        return req.json().get('data').get('subscribers', 0)
     except Exception as e:
-        print(e)
+        return 0
 
-    return req.json().get('data').get('subscribers', 0)
 
 if __name__ == "__main__":
     pass
