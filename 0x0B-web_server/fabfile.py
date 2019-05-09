@@ -36,6 +36,7 @@ def deploy(ctc, usr="ubuntu", host="104.196.3.52", key_file=""):
         c.run("mkdir -p /tmp/holbertonwebapp")
         c.put(tar_file, "/tmp/")
         c.run("tar xpfz /tmp/{} -C /tmp/holbertonwebapp".format(tar_file))
+        c.local("echo DONE!")
 
 
 @task

@@ -12,7 +12,10 @@ printf "server  {
 	location / {
 		index index.html index.html;	
 	}
-}" > "$DEST/default"
+
+	
+}
+" > "$DEST/default"
 mkdir -p $Static
 echo "Holberton School was here!" > $Static/index.html
 service nginx restart
