@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This script will return the number of subscribers associated with 
+"""This script will return the number of subscribers associated with
 a subreddit
 """
 import json
@@ -12,7 +12,7 @@ def top_ten(subreddit):
 
     subreddit (Str)- subreddit to check
 
-    Returns - number of users (INT) else 0 (INT) if not subreddit is found 
+    Returns - number of users (INT) else 0 (INT) if not subreddit is found
     """
     try:
         h = {'user-agent': 'Mozilla/5.0'}
