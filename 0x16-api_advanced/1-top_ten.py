@@ -15,7 +15,7 @@ def top_ten(subreddit):
     Returns - number of users (INT) else 0 (INT) if not subreddit is found
     """
     try:
-        h = {'user-agent': 'Mozilla/5.0'}
+        h = {'user-agent': 'Mozilla/5.0', 'allow_redirects': 'false'}
         p = {'limit': 10}
         url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
         req = requests.get(url, headers=h, params=p).json().get('data')
