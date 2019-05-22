@@ -1,3 +1,4 @@
+# this does something cool
 file {'/var/www/html/wp-settings.php':
   ensure => present,
 }-> exec { 'fix a line in wp-settings.php':
