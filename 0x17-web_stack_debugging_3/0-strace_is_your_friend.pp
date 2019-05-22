@@ -1,9 +1,6 @@
-include stdlib
-file {'/var/www/html':
+file {'/var/www/html/wp-settings.php':
   ensure => present,
-}-> file_line { 'fix a line in wp-settings.php':
-  path               => '/var/www/html/wp-settings.php',
-  line               => '/class-wp-locale.php',
-  match              => '/class-wp-locale.phpp',
-  append_on_no_match => false,
+}-> exec { 'fix a line in wp-settings.php':
+  path    => '/usr/local/bin/:/bin/',
+  command => "sed -i 's/class-wp-locale.phpp/class-wp-locale.php/'  /var/www/html/wp-settings.php",
 }
