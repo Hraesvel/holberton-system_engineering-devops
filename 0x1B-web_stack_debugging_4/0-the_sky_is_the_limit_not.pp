@@ -3,5 +3,5 @@ file { '/etc/default/nginx':
   ensure => present,
 } -> exec { 'increase fs.open':
   path    => '/bin/',
-  command => "sed -i 's/4/20/g' /etc/default/nginx"
+  command => "sed -i 's/15/1024/g' /etc/default/nginx"
 }
