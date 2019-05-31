@@ -7,7 +7,7 @@ service { 'nginx':
 file { '/etc/default/nginx':
   ensure => present,
 } -> exec { 'increase ULIMIT':
-  notify => Service['nginx'], # set up a relationship
+  notify  => Service['nginx'], # set up a relationship
   path    => '/bin/',
   command => "sed -i 's/15/1024/g' /etc/default/nginx"
 }
